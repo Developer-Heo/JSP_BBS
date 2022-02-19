@@ -24,13 +24,13 @@ public class UserDAO {
 	}
 
 	public int login(String userId, String userPassword) {
-		String SQL = "select userPassword from user where userId = ?";
+		String SQL = "select userPassword from bbs.user where userId = ?";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				if (rs.getString(1).contentEquals(userPassword))
+				if (rs.getString(1).equals(userPassword))
 					return 1; // 로그인 성공
 				else
 					return 0; // 비밀번호 불일치
@@ -43,7 +43,7 @@ public class UserDAO {
 	}
 	
 	public int join(User user) {
-		String SQL = "insert into user values (?, ?, ?, ? ,?)";
+		String SQL = "insert into bbs.user values (?, ?, ?, ? ,?)";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, user.getUserId());

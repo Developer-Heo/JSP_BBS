@@ -1,0 +1,17 @@
+create database BBS;
+
+create table BBS.user(
+userId varchar(20),
+userPassword varchar(20),
+userName varchar(20),
+userGender varchar(20),
+userEmail varchar(50),
+primary key (userID)
+);
+
+
+insert into bbs.user values('gildong','123456','홍길동','남자','gildong@naver.com');
+
+select * from bbs.user;
+
+commit;
