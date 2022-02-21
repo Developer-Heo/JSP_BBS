@@ -81,7 +81,7 @@
 					<tbody>
 						<tr>
 							<td style="width: 20%;">글 제목</td>
-							<td colspan="2"><%= bbs.getBbsTitle() %></td>
+							<td colspan="2"><%= bbs.getBbsTitle().replaceAll(" ","&nbsp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll("\n","<br>") %></td>
 						</tr>
 						<tr>
 							<td>작성자</td>
@@ -94,11 +94,19 @@
 						</tr>
 						<tr>
 							<td>내용</td>
-							<td colspan="2" style="min-hight: 200px; text-align: left"><%= bbs.getBbsContent() %></td>
+							<td colspan="2" style="min-hight: 200px; text-align: left;"><%= bbs.getBbsContent().replaceAll(" ","&nbsp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll("\n","<br>") %></td>
 						</tr>
 					</tbody>
 				</table>
-				<input type="submit" class="btn btn-primary pull-right" value="글쓰기">
+				<a href="bbs.jsp" class="btn btn-primary">목록</a>
+				<%
+				    if(userId != null && userId.equals(bbs.getUserId())) {
+				%>
+				    <a href="update.jsp?bbsId=<%=bbsId %>" class="btn btn-primary">수정</a>
+				    <a href="delete.jsp?bbsId=<%=bbsId %>" class="btn btn-primary">삭제</a>
+			    <% 
+				    }
+			    %>
 		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
