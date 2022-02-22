@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width" , initial-scale="1">
 <!-- 화면에 맞게 조절 -->
 <link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/custom.css">
 <!-- 기본 디자인 설정 -->
 <title>JSP 게시판 웹 사이트</title>
 </head>

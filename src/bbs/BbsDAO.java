@@ -128,4 +128,30 @@ public class BbsDAO {
 		}
 		return null;
 	}
+	
+	public int update(int bbsId, String bbsTitle, String bbsContent) {
+		String SQL = "update bbs.BBS set bbsTitle =?, bbsContent =? where bbsId = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL); // 데이터 접근 겹치지 않게 preparedStatement를 각자 넣어줌
+			pstmt.setString(1, bbsTitle);
+			pstmt.setString(2, bbsContent);
+			pstmt.setInt(3, bbsId);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1; // 데이터베이스 오류
+	}
+	
+	public int delete(int bbsId) {
+		String SQL = "update bbs.BBS set bbsAvailable = 0 where bbsId = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL); // 데이터 접근 겹치지 않게 preparedStatement를 각자 넣어줌
+			pstmt.setInt(1, bbsId);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1; // 데이터베이스 오류
+	}
 }
